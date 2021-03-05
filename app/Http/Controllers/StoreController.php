@@ -77,9 +77,9 @@ class StoreController extends Controller
 
                 $row .="<tr> ".
 
-                    "<td>".$mt->name."</td>".
-                    "<td>".$item->amount."</td>".
-                    "<td>".$item->expiry."</td>"
+                    "<td  style=".'text-align:center;'.">".$mt->name."</td>".
+                    "<td style=".'text-align:center;'.">".$item->amount."</td>".
+                    "<td style=".'text-align:center;'.">".$item->expiry."</td>"
                     ."</tr>";
 
             }

@@ -100,6 +100,7 @@
             <div class="nav-container">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item"><a href="{{url('/notify')}}"><i class="fa fa-bell"></i><span class="menu-title" data-i18n="Email"> اشعارات الصلاحية </span></a>
+                    <li class=" nav-item"><a href="{{url('/backup')}}"><i class="fa fa-share-square"></i><span class="menu-title" data-i18n="Email"> إنشاء نسخة احتياطية </span></a>
                     <li class=" nav-item"><a href="{{url('/clients')}}"><i class="fa fa-male"></i><span class="menu-title" data-i18n="Email"> الزبائن </span></a>
                     <li class=" nav-item"><a href="{{url('/sells')}}"><i class="ft ft-shopping-bag"></i><span class="menu-title" data-i18n="Email">  المبيعات  </span></a>
                     <li class=" nav-item"><a href="{{url('/suppliers')}}"><i class="fa fa-superpowers"></i><span class="menu-title" data-i18n="Email"> الشركات الموردة </span></a>

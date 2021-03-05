@@ -46,11 +46,11 @@
                                                 <div class="col-md-6 pull-right">
                                                     <div >
                                                         <table class="table table-striped">
-                                                            <thead >
+                                                            <thead style="text-align: center;" >
                                                             <tr>
-                                                                <th>المادة </th>
-                                                                <th>الكمية </th>
-                                                                <th>الصلاحية </th>
+                                                                <th style="text-align: center;">المادة </th>
+                                                                <th style="text-align: center;">الكمية </th>
+                                                                <th style="text-align: center;">الصلاحية </th>
                                                             </tr>
                                                             </thead>
                                                             <tbody id="raws" ></tbody>
@@ -99,9 +99,6 @@
 
                         $("#raws").html(data.row);
                     }
-                    // $('#material_id').val(data.name);
-                    // $('#amount').val(data.amount);
-                    // $('#expiry').val(data.expiry);
 
                 })
 

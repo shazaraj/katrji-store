@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-md-12"> <label> الموبايل </label>
                                 <div class="form-group">
-                                    <input type="number" name="mobile" id="mobile" placeholder="" class="form-control">
+                                    <input type="text" name="mobile" id="mobile" placeholder="" class="form-control">
                                 </div>
                             </div>
 

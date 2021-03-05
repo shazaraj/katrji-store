@@ -34,84 +34,79 @@
                                 @endif
 
                             </div>
-{{--                            <button type="button" id="createNew"--}}
-{{--                                    data-toggle="modal" data-target="#advertModal" class="btn gradient-purple-bliss" style="margin: 5px">إضافة</button>--}}
                         </div>
-                        <form action="" method="post" id="client_sale_form" style="margin-right: 12px;">
-                            @csrf
-
                             <div class="row">
                             <div class="col-md-12 form-group pull-right">
                                 <div class="nav-tabs-custom">
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab_1-1">
-                               <div class="row">
-      <form method="post" id="productForm" enctype="multipart/form-data">
-
-                                   <div class="col-md-6 pull-right">
+           <div class="tab-pane active" id="tab_1-1">
+             <div class="row">
+    <form method="post" id="productForm" style="margin:10px;" enctype="multipart/form-data">
+          @csrf
+          <input type="hidden" name="_id" id="_id"/>
+          <div class="col-md-6 pull-right">
 
                           <label for="">تحديد الزبون</label>
-                              <select name="client_id" id="client_id" class="form-control select2">
+              <label for="client_id"></label><select name="client_id" id="client_id" class="form-control select2">
                                   @if(count($client) >0 )
                                       @foreach ($client as $mt)
                                           <option value="{{$mt->id}}">{{$mt->name}}</option>
                                       @endforeach
                                   @endif
                               </select>
-                                </div>
-                                                <div class="col-md-6 pull-right">
-                                                    <label for="">إجمالي الديون</label>
-                                                    <input type="text" class="form-control" name="remain" id="remain"  placeholder="" disabled>
-                                                </div>
-                                                <div class="col-md-6 pull-right">
-                                                    <label for="">إجمالي الفواتير</label>
-                                                    <input type="text" class="form-control" name="all_price" id="all_price" placeholder="" disabled >
-                                                </div>
-                                                <div class="col-md-6 pull-right">
-                                                    <label for="">الدفعات السابقة</label>
-                                                    <input type="text" class="form-control" name="paid1" id="paid1" placeholder="" disabled >
-                                                </div>
-                                                <div class="col-md-6 pull-right">
-                                                    <label for="">الحسومات</label>
-                                                    <input type="text" class="form-control" name="discount" id="discount" placeholder="" disabled >
-                                                </div>
-                                                <br>
-                                                <br>
-                                                <div class="col-md-6 pull-right">
-                                                    <label for="">الدفعة الحالية</label>
-                                                    <input type="text" class="form-control" name="paid" id="paid" placeholder="" >
-                                                </div>
-
-
-                                            </div>
-                                            <br>
-                                        </div>
-                                    </div>
-                                </div>
-<div class="pull-right">
-       <button type="submit" id="save_paid" class="btn btn-info"> حفظ دفعة التسديد   </button>
-</div>
-
-<div class="pull-left">
-    <input type="hidden" name="_id" id="_id"/>
-   <button type="submit" name="action" id="action" class="btn btn-success" >طباعة وصل بالدفعات</button>
-</div>
-                                <br>
-                                <br>
-                                <div >
-                                    <table class="table table-striped">
+          </div>
+          <div class="col-md-6 pull-right">
+              <label for="">إجمالي الديون</label>
+              <label for="remain"></label><input type="text" class="form-control" name="remain" id="remain" placeholder="" disabled>
+          </div>
+          <div class="col-md-6 pull-right">
+              <label for="">إجمالي الفواتير</label>
+              <label for="all_price"></label><input type="text" class="form-control" name="all_price" id="all_price" placeholder="" disabled >
+          </div>
+          <div class="col-md-6 pull-right">
+              <label for="">الدفعات السابقة</label>
+              <label for="paid1"></label><input type="text" class="form-control" name="paid1" id="paid1" placeholder="" disabled >
+          </div>
+          <div class="col-md-6 pull-right">
+              <label for="">الحسومات</label>
+              <label for="discount"></label><input type="text" class="form-control" name="discount" id="discount" placeholder="" disabled >
+          </div>
+          <br>
+          <div class="col-md-6 pull-right">
+              <label for="">الدفعة الحالية</label>
+              <label for="paid"></label><input type="text" class="form-control" name="paid" id="paid" placeholder="" >
+          </div>
+          <br>
+        <div style="margin: 15px; ">
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+          <div class="pull-right">
+              <button style="margin: 15px; " type="submit" id="save_paid" class="btn btn-info"> حفظ دفعة التسديد   </button>
+          </div>
+          <div class="pull-left">
+              <button style="margin: 15px; " type="submit" name="action" id="action" class="btn btn-success" >طباعة وصل بالدفعات</button>
+          </div>
+        </div>
+          <br>
+          <br>
+          <div>
+              <br>           <table class="table table-striped">
                                         <thead >
                                         <tr>
-                                            <th>المبلغ </th>
-                                            <th>التاريخ </th>
+                                            <th style="text-align: center;">المبلغ </th>
+                                            <th style="text-align: center;" >التاريخ </th>
                                         </tr>
                                         </thead>
-                                        <tbody id="raws" ></tbody>
+                                        <tbody id="raws" style="text-align: center;"></tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
-                  </form>
+         </form>
+             </div>
+           </div>
                         <br>
                     </div>
                 </div>
@@ -120,6 +115,11 @@
         <div id="print_form_1_print" style="display: none !important;">
 
         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
    </section>
 @endsection
 
@@ -175,29 +175,15 @@
 
             })
 
-
-            $('#createNew').click(function () {
-
-                $('#action').val("إضافة");
-
-                $('#_id').val('');
-
-                $('#productForm').trigger("reset");
-
-                $('#modelHeading').html("  إضافة جديد  ");
-
-            });
             $('#action').click(function (e) {
 
                 e.preventDefault();
 
                 $('#action').html('Printing..');
 
-                var item = $(this);
+                var item_id =    $("#client_id").val();
 
-
-                var item_id =   $('#_id').val();
-
+                // alert(item_id)
 
                 $.ajax({
                     url:"{{url('print_bills')}}/"+item_id,
@@ -211,8 +197,7 @@
                     {
                         $("#print_form_1_print").html(data);
                         printReport(data);
-                        $('#action').html('<i class="fa fa-print">');
-
+                        $('#action').html('<button class="btn btn-success">طباعة وصل بالدفعات</button>');
 
                         // reload();
 
@@ -262,13 +247,11 @@
             $('#save_paid').click(function (e) {
 
                 e.preventDefault();
-                // var item=$(this);
-                // item.html("<i class='fa fa-spinner'></i>");
 
-
+                var client = $("#client_id").val();
                 $.ajax({
 
-                    data: $('#client_sale_form').serialize(),
+                    data: $('#productForm').serialize(),
 
                     url: "{{ route('bills.store') }}",
 
@@ -277,19 +260,12 @@
                     dataType: 'json',
 
                     success: function (data) {
-                        $('#action').html('إضافة');
-                        if(data.status == 200){
+                        $('#save_paid').html('حفظ دفعة التسديد');
+                        if(data.status === 200){
                             toastr.success('تم الحفظ بنجاح');
-                            // window.reload();
-                            // item.html("<i>حفظ الفاتورة</i>");
-                            $('#client_sale_form').trigger('reset');
+
+                            $('#productForm').trigger('reset');
                             $("#raws").html("");
-                            // $('#raws').trigger('reset');
-                            // $("#materials_table").trigger('reset');
-                            // $("#materials_table").html("");
-                            // $("#materials_table").cleanData;
-                            // table.draw();
-                            // $("#materials_table").append("<tr></tr>" );
                         }
                         else {
                             toastr.warning(data.err);

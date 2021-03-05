@@ -77,13 +77,13 @@ class ClientInvoicesController extends Controller
     {
         $client_bill = ClientInvoices::create(
             [
-                'client_id' => $request->client_id,
-//                'amount' => $request->amount,
-                'all_price' => $request->all_price,
-                'paid' => $request->paid,
-                'discount' => $request->discount,
-                'type' => 0,
-                'remain' => $request->all_price -$request->discount - $request->paid,
+                    'client_id' => $request->client_id,
+    //                'amount' => $request->amount,
+                    'all_price' => $request->all_price,
+                    'paid' => $request->paid,
+                    'discount' => $request->discount,
+                    'type' => 0,
+                    'remain' => $request->all_price -$request->discount - $request->paid,
 
 //                'date' => $request->date,
             ])->id;
@@ -185,39 +185,36 @@ class ClientInvoicesController extends Controller
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body class="deep-purple-skin">'.
+<body class="deep-purple-skin" >'.
             '<div class="row text-center" dir="rtl">
-                <div class="col-md-6 pull-right" style="margin-top: 5px; color: #06221b;">
+       <div class="col-md-6 pull-right" style="margin-top: 5px; color: #06221b;">
                     <h2><b> مكتب الخدمات البيطرية </b></h2>
                     <h3><b> الدكتور حسن قاطرجي </b></h3>
                     <h3> إشراف، معالجة وأدوية </h3>
                     <h4> 963-933709555+ </h4>
 
 
-                </div>
+        </div>
 
+        <div class="row icon-bar-chart" dir="ltr">
+                       <div class="col-md-6 pull-left">
+                        <img class="badge-circle" src="http://localhost/laravel/katrji/public/app-assets/img/ico/logo.png" width="200" height="200" style="margin-left: 10px;">
+                        </div>
+        </div>
+    </div>
+<br>
 
-
-            <div class="row icon-bar-chart" dir="ltr">
-               <div class="col-md-6 pull-left">
-                <img class="badge-circle" src="'.asset('app-assets/img/ico/logo.png').'" width="200" height="200" style="margin-left: 15px;">
-
-                </div>
-</div>
-            </div>
-            <hr>
-            <div class="row text-center">
-            <div class="col-md-12 align-content-center text-right">
+<div class="row" style="margin: 15px;">
+        <div class="col-md-12 pull-right text-center" style="margin-top: 25px;">
             <div class="col-md-6 pull-right">
 				<p>
-					:السيد المحترم
+					السيد المحترم:
 				</p>
 				<p>
 				'.$client.'
 				</p>
 			</div>
-
-			<div class="col-md-6 pull-left text-left">
+			<div class="col-md-6 pull-left">
 				<p>
 					التاريخ
 				</p>
@@ -225,25 +222,11 @@ class ClientInvoicesController extends Controller
 				'.$invoice->created_at.'
 				</p>
 			</div>
-			<br>
-			<br>
-            <table class="table table-striped text-center" dir="rtl">
-                    <thead >
-                                <tr>
-                                    <th width="30%">المادة</th>
-                                    <th width="30%" >الكمية </th>
-                                    <th width="30%" >المبلغ </th>
-                                </tr>
-                    </thead>
-                    <tbody>
-                        '.$row.'
-                    </tbody>
-             </table>
-                </div>
-            </div>
-            <br>
-          <div class="row">
-		    	<div class="col-md-6 pull-right ">
+		</div>
+
+        <div class="row">
+            <div class="col-md-12 pull-right " dir="rtl" style="margin-top: 25px;">
+			<div class="col-md-6 pull-right">
 				<p>
 					إجمالي الفاتورة
 				</p>
@@ -251,7 +234,6 @@ class ClientInvoicesController extends Controller
 				'.$invoice->all_price.'
 				</p>
 			</div>
-
 			<div class="col-md-6 pull-right">
 				<p>
 					المبلغ المدفوع
@@ -260,7 +242,6 @@ class ClientInvoicesController extends Controller
 					'.$invoice->paid.'
 				</p>
 			</div>
-
 			<div class="col-md-6 pull-right">
 				<p>
 					المبلغ المتبقي
@@ -269,7 +250,6 @@ class ClientInvoicesController extends Controller
 					'.$invoice->remain.'
 				</p>
 			</div>
-
 			<div class="col-md-6 pull-right">
 				<p>
 					حسم من قبلنا
@@ -278,11 +258,39 @@ class ClientInvoicesController extends Controller
 					'.$invoice->discount.'
 				</p>
 			</div>
+            </div>
+        </div>
+        <div class="col--md-2" style="margin-top: 25px;"></div>
+        <div class="col--md-8">
+            <table class="table table-striped" dir="rtl">
+                <thead>
+                 <tr>
+
+                <th style="text-align: center;">المادة</th>
+                <th style="text-align: center;">الكمية</th>
+                <th style="text-align: center;">المبلغ</th>
+
+
+                </tr>
+                </thead>
+                <tbody style="text-align: center;">
+                        '.$row.'
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col--md-2"></div>
+        <div class="col-md-6" style="text-align: right; margin-top: 25px;">
+        <p>
+        :الملاحظات
+</p>
+</div>
 
 
    </div>
 
-</div>
+</body>
+</html>
 
 
 ';

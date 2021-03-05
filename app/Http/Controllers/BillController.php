@@ -124,6 +124,7 @@ public function index1(Request $request){
             ->where('client_id','=',$id)
 //            ->where('type','=',1)
             ->get();
+       $row = [];
         if(!empty($sd) && count($sd) > 0){
         foreach ($sd as $item){
             $item2 = [
@@ -141,7 +142,7 @@ public function index1(Request $request){
     /**
     print client invoice bills
      */
-    public function printBill($id){
+    public function printBill(Request $request ,$id){
 
         $date = Carbon::now();
 
@@ -163,7 +164,7 @@ public function index1(Request $request){
             ->where('client_id','=',$id)
 //            ->where('type','=',1)
             ->get();
-        $client = Client::find($sd->client_id)->name;
+        $client = Client::find($id)->name;;
 
 //        $img = asset('app-assets/img/ico/logo.png');
 
@@ -173,8 +174,8 @@ public function index1(Request $request){
 
                 $row .= "<tr> ".
 
-                "<td>".$item->paid."</td>".
-                "<td>".$item->created_at."</td>"
+                "<td width='30%'>".$item->paid."</td>".
+                "<td width='30%'>".$item->created_at."</td>"
                 ."</tr>";
             }
         }
@@ -194,28 +195,27 @@ public function index1(Request $request){
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body class="deep-purple-skin">'.
+<body class="deep-purple-skin" >'.
             '<div class="row text-center" dir="rtl">
-                <div class="col-md-6 pull-right" style="margin-top: 5px; color: #06221b;">
+       <div class="col-md-6 pull-right" style="margin-top: 5px; color: #06221b;">
                     <h2><b> مكتب الخدمات البيطرية </b></h2>
                     <h3><b> الدكتور حسن قاطرجي </b></h3>
                     <h3> إشراف، معالجة وأدوية </h3>
                     <h4> 963-933709555+ </h4>
 
 
-                </div>
-
         </div>
+
         <div class="row icon-bar-chart" dir="ltr">
                        <div class="col-md-6 pull-left">
-                        <img class="badge-circle" src="' .asset('app-assets/img/ico/logo.png').'" width="200" height="200" style="margin-left: 15px;">
-
+                        <img class="badge-circle" src="http://localhost/laravel/katrji/public/app-assets/img/ico/logo.png" width="200" height="200" style="margin-left: 10px;">
                         </div>
         </div>
-<hr>
-<div class="row">
-<div class="col-md-12 pull-right text-right">
-<div class="col-md-6 pull-right">
+    </div>
+<br>
+<div class="row" style="margin: 15px;">
+        <div class="col-md-12 pull-right text-center" style="margin-top: 25px;">
+            <div class="col-md-6 pull-right">
 				<p>
 					اسم الزبون:
 				</p>
@@ -231,23 +231,10 @@ public function index1(Request $request){
 				'.$date.'
 				</p>
 			</div>
-<table class="table table-striped" dir="rtl">
-<tr>
-
-<th>الدفعات</th>
-<th>التاريخ</th>
-
-
-</tr>
-'.$row.'
-</table>
-
-
-							</div>
-</div>
-   <div class="row">
-		<div class="col-md-6 pull-right">
 		</div>
+
+        <div class="row">
+            <div class="col-md-12 pull-right " dir="rtl" style="margin-top: 25px;">
 			<div class="col-md-6 pull-right">
 				<p>
 					إجمالي الفواتير
@@ -280,10 +267,38 @@ public function index1(Request $request){
 					'.$discount.'
 				</p>
 			</div>
+            </div>
+        </div>
+        <div class="col--md-2" style="margin-top: 25px;"></div>
+        <div class="col--md-8">
+            <table class="table table-striped" dir="rtl">
+                <thead>
+                 <tr>
+
+                <th style="text-align: center;">الدفعات</th>
+                <th style="text-align: center;">التاريخ</th>
+
+
+                </tr>
+                </thead>
+                <tbody style="text-align: center;">
+                        '.$row.'
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col--md-2"></div>
+        <div class="col-md-6" style="text-align: right; margin-top: 25px;">
+        <p>
+        :الملاحظات
+</p>
+</div>
+
 
    </div>
 
-</div>
+</body>
+</html>
 
 
 ';
@@ -308,6 +323,7 @@ public function index1(Request $request){
      */
     public function store(Request $request)
     {
+//        return $request->all();
         ClientInvoices::create(
             [
                 'client_id'=>$request->client_id,

@@ -119,12 +119,15 @@
                         <input type="hidden" name="_id" id="_id"/>
                         <input type="hidden" name="operation" id="operation"/>
 {{--                        <input type="reset" class="btn bg-light-secondary" data-dismiss="modal"><i class="fa fa-close"></i>--}}
-                        <button type="submit" name="action" id="action" class="btn btn-success" ><i class="fa fa-print"></i>
-                        </button>
+{{--                        <button type="submit" name="action" id="action" class="btn btn-success" ><i class="fa fa-print"></i>--}}
+{{--                        </button>--}}
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+    <div id="print_form_1_print" style="display: none !important;">
+
     </div>
 
 @endsection
@@ -232,98 +235,6 @@
                 })
 
             });
-
-
-            $('#action').click(function (e) {
-
-                e.preventDefault();
-
-                $('#action').html('Printing..');
-
-                window.print();
-
-                {{--$.ajax({--}}
-
-                {{--    data: $('#productForm').serialize(),--}}
-
-                {{--    --}}{{--url: "{{ route('print.invoices') }}",--}}
-
-                {{--    type: "POST",--}}
-
-                {{--    dataType: 'json',--}}
-
-                {{--    success: function (data) {--}}
-                {{--        $('#action').html('printed');--}}
-
-
-                {{--        if(data.status == 200){--}}
-                {{--            toastr.success('تم الحفظ بنجاح');--}}
-                {{--            $('#productForm').trigger("reset");--}}
-                {{--            $('#advertModal').modal("hide");--}}
-                {{--            $(".modal-backdrop").hide();--}}
-                {{--            window.print();--}}
-                {{--        }--}}
-                {{--        else {--}}
-                {{--            toastr.warning(data.success);--}}
-
-                {{--        }--}}
-
-
-                {{--    },--}}
-
-                {{--    error: function (data) {--}}
-
-                {{--        console.log('Error:', data);--}}
-
-                {{--        $('#action').html('printed');--}}
-
-                {{--    }--}}
-
-                {{--});--}}
-
-            });
-            {{--$('#submit').click(function (e) {--}}
-
-            {{--    e.preventDefault();--}}
-
-            {{--    $(this).html('Printing..');--}}
-
-
-            {{--    $.ajax({--}}
-
-            {{--        data: $('#productEditForm').serialize(),--}}
-
-            {{--        url: "{{ route('supplier_invoices.store') }}",--}}
-
-            {{--        type: "POST",--}}
-
-            {{--        dataType: 'json',--}}
-
-            {{--        success: function (data) {--}}
-            {{--            $('#action').html('   حفظ التعديلات &nbsp; <i class="fa fa-save"></i> ');--}}
-
-
-            {{--            $('#productEditForm').trigger("reset");--}}
-            {{--            $('#ajaxModel').modal('hide');--}}
-
-            {{--            table.draw();--}}
-
-            {{--            toastr.success("تم التعديل بنجاح");--}}
-
-            {{--        },--}}
-
-            {{--        error: function (data) {--}}
-
-            {{--            console.log('Error:', data);--}}
-            {{--            $('#ajaxModel').modal('hide');--}}
-
-            {{--            $('#editBtn').html('Save changes &nbsp; <i class="fa fa-save"></i> ');--}}
-
-            {{--        }--}}
-
-            {{--    });--}}
-
-            {{--});--}}
 
 
             $('body').on('click', '.deleteProduct', function () {

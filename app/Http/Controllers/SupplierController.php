@@ -71,7 +71,7 @@ class SupplierController extends Controller
     {
         $validateErrors = Validator::make($request->all(),
             [
-                'name' => 'unique:suppliers,name|required|string|min:3|max:15',
+                'name' => 'required|string|min:3|max:15',
                 'mobile' => 'required',
 
             ]);
@@ -100,6 +100,7 @@ class SupplierController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.

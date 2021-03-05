@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\ClientBill;
+use App\Models\ClientInvoices;
 use App\Models\Materials;
 use App\Models\Store;
 use App\Models\SupplierBill;
@@ -175,9 +178,154 @@ class SupplierInvoicesController extends Controller
             }
         return  response()->json(["invoice"=>$invoice , "row"=>$row, "supplier"=>$supplier]);
     }
-    public function printInvoices(){
-        //
-    }
+//    public function printInvoices(Request $request , $id){
+//        $invoice = SupplierInvoices::with('material')->find($id);
+//        $bill = SupplierBill::where('id','=',$invoice->bill_id)->get();
+//        $client = Suppliers::find($invoice->supplier_id)->name;
+//
+//
+//        $row = "";
+//
+//        if(!empty($invoice->material) && count($invoice->material) > 0)
+//
+//            foreach ($invoice->material as $item){
+//                $mt =   Materials::find($item->material_id);
+//
+//                $row .="<tr> ".
+//
+//                    "<td width=".'30%'.">".$mt->name."</td>".
+//                    "<td width=".'30%'.">".$item->amount."</td>".
+//                    "<td width=".'30%'.">".$item->single_price."</td>"
+//                    ."</tr>";
+//
+//            }
+//        $output = '<!DOCTYPE html>
+//<html lang="en">
+//<head>
+//    <meta charset="utf-8">
+//    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+//    <meta http-equiv="x-ua-compatible" content="ie=edge">
+//    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+//
+//            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+//
+//
+//            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+//
+//        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+//</head>
+//<body class="deep-purple-skin" >'.
+//            '<div class="row text-center" dir="rtl">
+//       <div class="col-md-6 pull-right" style="margin-top: 5px; color: #06221b;">
+//                    <h2><b> مكتب الخدمات البيطرية </b></h2>
+//                    <h3><b> الدكتور حسن قاطرجي </b></h3>
+//                    <h3> إشراف، معالجة وأدوية </h3>
+//                    <h4> 963-933709555+ </h4>
+//
+//
+//        </div>
+//
+//        <div class="row icon-bar-chart" dir="ltr">
+//                       <div class="col-md-6 pull-left">
+//                        <img class="badge-circle" src="http://localhost/laravel/katrji/public/app-assets/img/ico/logo.png" width="200" height="200" style="margin-left: 10px;">
+//                        </div>
+//        </div>
+//    </div>
+//<br>
+//
+//<div class="row" style="margin: 15px;">
+//        <div class="col-md-12 pull-right text-center" style="margin-top: 25px;">
+//            <div class="col-md-6 pull-right">
+//				<p>
+//					السيد المحترم:
+//				</p>
+//				<p>
+//				'.$client.'
+//				</p>
+//			</div>
+//			<div class="col-md-6 pull-left">
+//				<p>
+//					التاريخ
+//				</p>
+//				<p>
+//				'.$invoice->created_at.'
+//				</p>
+//			</div>
+//		</div>
+//
+//        <div class="row">
+//            <div class="col-md-12 pull-right " dir="rtl" style="margin-top: 25px;">
+//			<div class="col-md-6 pull-right">
+//				<p>
+//					إجمالي الفواتير
+//				</p>
+//				<p>
+//				'.$invoice->all_price.'
+//				</p>
+//			</div>
+//			<div class="col-md-6 pull-right">
+//				<p>
+//					المبلغ المدفوع
+//				</p>
+//				<p>
+//					'.$invoice->paid.'
+//				</p>
+//			</div>
+//			<div class="col-md-6 pull-right">
+//				<p>
+//					المبلغ المتبقي
+//				</p>
+//				<p>
+//					'.$invoice->remain.'
+//				</p>
+//			</div>
+//			<div class="col-md-6 pull-right">
+//				<p>
+//					حسم من قبلنا
+//				</p>
+//				<p>
+//					'.$invoice->discount.'
+//				</p>
+//			</div>
+//            </div>
+//        </div>
+//        <div class="col--md-2" style="margin-top: 25px;"></div>
+//        <div class="col--md-8">
+//            <table class="table table-striped" dir="rtl">
+//                <thead>
+//                 <tr>
+//
+//                <th style="text-align: center;">المادة</th>
+//                <th style="text-align: center;">الكمية</th>
+//                <th style="text-align: center;">المبلغ</th>
+//
+//
+//                </tr>
+//                </thead>
+//                <tbody style="text-align: center;">
+//                        '.$row.'
+//                </tbody>
+//
+//            </table>
+//        </div>
+//        <div class="col--md-2"></div>
+//        <div class="col-md-6" style="text-align: right; margin-top: 25px;">
+//        <p>
+//        :الملاحظات
+//</p>
+//</div>
+//
+//
+//   </div>
+//
+//</body>
+//</html>
+//
+//
+//';
+//        return $output;
+//    }
+
     /**
      * Display the specified resource.
      *

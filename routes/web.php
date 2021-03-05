@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,11 @@ Route::get('supplier_bills/{id}/edit', 'App\Http\Controllers\SupplierInvoicesCon
 Route::get('print_invoices', 'App\Http\Controllers\ClientInvoicesController@printInvoices')->name("print.invoices");
 Route::post('print_invoices/{id}', 'App\Http\Controllers\ClientInvoicesController@printInvoices')->name("print.invoices");
 
+////print supplier invoices
+//Route::get('print_suppliers', 'App\Http\Controllers\SupplierInvoicesController@printInvoices')->name("print.suppliers");
+//Route::post('print_suppliers/{id}', 'App\Http\Controllers\SupplierInvoicesController@printInvoices')->name("print.suppliers");
+
+
 //print client bills
 Route::get('print_bills', 'App\Http\Controllers\BillController@printBill')->name("print.bills");
 Route::post('print_bills/{id}', 'App\Http\Controllers\BillController@printBill')->name("print.bills");
@@ -84,3 +90,9 @@ Route::get('/getDay', 'App\Http\Controllers\TodayReportController@dayReport');
 //monthly reports
 Route::get('/month/report/{from_date}/{to_date}', 'App\Http\Controllers\TodayReportController@getMonth');
 Route::get('/month/report', 'App\Http\Controllers\TodayReportController@monthReport');
+
+    Route::get('/backup',function (){
+       $back=     Artisan::call('database:backup');
+        return view('welcome',compact('back'));
+        echo 'تم إنشاء نسخة احتياطية';
+    });
